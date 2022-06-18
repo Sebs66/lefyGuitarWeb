@@ -1,0 +1,399 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    font-size: 100%;
+    vertical-align: baseline;
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+// sass tiene un error de mierda que no deja usar la función repeat(). En vez de esto, usaremos una funcion creada por nosotros..
+
+@function repeater($n, $character) {
+    $c: "";
+
+    @for $i from 1 through $n {
+        $c: $c +" "+ $character;
+    }
+
+    @return unquote($c);
+}
+body {
+    font-family: sans-serif;
+    display: grid;
+    /* background-color: black; */
+    /* opacity:80%; */
+    grid-template-areas:
+        "sideLeft header header sideRight"
+        "sideLeft principal principal sideRight"
+        "sideLeft principal principal sideRight"
+        "sideLeft principal principal sideRight"
+        "footer footer footer footer";
+    grid-template-columns: 1fr 5fr 5fr 1fr;
+    .header {
+        grid-area: head / head / head / head;
+        grid-column: 1/6;
+        grid-row:1/2;
+        margin:auto;
+        .titulo {
+            display: flex;
+            justify-content: center;
+            font-size: 60px;
+        }
+        .subtitulo {
+            display: flex;
+            justify-content: center;
+            font-size: 40px;
+        }
+    }
+    .sideLeft{
+        grid-area: sideLeft / sideLeft / sideLeft / sideLeft;
+    }
+    .sideRight{
+        grid-area: sideRight / sideRight / sideRight / sideRight;
+        button.darkMode{
+            margin-top: 20px;
+        }
+    }
+    
+    .principal{
+        grid-area: principal / principal / principal / principal;
+        display:flex;
+        flex-direction: column;
+        .direccionGuitarra{
+            display:flex;
+            width:100%;
+            align-items: start;
+            position: relative;
+            top:50px;
+            button#leftGuitarra{
+                display:flex;
+                img{
+                    height:15px;
+                }
+            }
+        }   
+        .guitarra,.guitarra2{
+            grid-column: 2/4;
+            display:grid;
+            grid-template-columns: 30fr 1fr;
+            grid-template-rows: 1fr 5fr 1fr;
+            height:500px;
+            .cuello{
+                grid-row:2/3;
+                display:flex;
+                flex-direction:row-reverse;
+                justify-content: space-evenly;
+                height: 100%;
+                background-image: url(../images/background-guitar.svg);
+                // https://www.magicpattern.design/tools/wave-generator
+                .traste0{
+                    position: relative;
+                    z-index: 1;
+                }
+                .traste{
+                    width:100%;
+                    display:grid;
+                    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+                    align-items: center;
+                    justify-items: center;
+                    border-right: solid 5px rgb(255, 255, 255);
+                    .nota{
+                        display:flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(22, 206, 83);
+                        font-weight: bolder;
+                        position:relative;
+                        z-index:2;
+                        height:25px;
+                        width:25px;
+                        border-radius: 50%;
+                        opacity:0%;
+                        &:hover{ // solo utilizaremos esta funcion para la guitarra 1. En la línea 192 definimos el hover para las notas de los intervalos con opacity 0%, asi no saltan cuando pasas el mouse por encima!
+                            opacity:100%;
+                        }
+                    }
+                    .nBemol{
+                        position: relative;
+                        bottom:12.5px;
+                    }
+                    .nSharp{
+                        position:relative;
+                        top:12.5px;
+                    }
+                    
+                }
+            }
+            .notasCuerdas{
+                grid-row:2/3;
+                grid-column:2/3;
+                background-image: url(../images/background-guitar.svg);
+                width:100%;
+                .traste{
+                    width:100%;
+                    display:grid;
+                    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+                    align-items: center;
+                    justify-items: center;
+                    border-right: solid 5px rgb(255, 255, 255);
+                    height:100%;
+                    .open{
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .cuerdasCuello{
+                .cuerda{
+                    width:100%;
+                    background-color: black;
+                    height:5%;
+                    position:relative;
+                    &:nth-child(1){
+                        top:137%;
+                    }
+                    &:nth-child(2){
+                        top:216%;
+                    }
+                    &:nth-child(3){
+                        top:294%;
+                    }
+                    &:nth-child(4){
+                        top:373%;
+                        height:5%;
+                    }
+                    &:nth-child(5){
+                        top:450%;
+                        height:7%;
+                    }
+                    &:nth-child(6){
+                        top:526%;
+                        height:10%;
+                    }
+                }
+            }
+            .numerosTrastes{
+                grid-column:1/2;
+                grid-row:3/4;
+                background-color: rgb(199, 116, 7);
+                height:70%;
+                display:grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+                width:100%;
+                justify-items: center;
+                &__traste{
+                    p.outNeck{
+                        background-color: white;
+                        height:20px;
+                        width: 20px;
+                        border-radius: 50%;
+                        position:relative;
+                        bottom:-25%;
+                        right:0%;
+                        right:12%;
+                    }
+                    p.inNeck{
+                        @extend p.outNeck;
+                        bottom:255%;
+                    }
+                }
+                .traste12 .outNeck:nth-child(1){
+                    top:10%;
+                }
+                .traste12 .outNeck:nth-child(2){
+                    top:15%;
+                }
+                .traste12 .inNeck:nth-child(3){
+                    bottom:210%;
+                }
+                .traste12 .inNeck:nth-child(4){
+                    bottom: 380%;
+                }
+                .traste12right .outNeck:nth-child(1){
+                    top:10%;
+                }
+                .traste12right .outNeck:nth-child(2){
+                    top:15%;
+                }
+                .traste12right .inNeck:nth-child(3){
+                    bottom:210%;
+                }
+                .traste12right .inNeck:nth-child(4){
+                    bottom: 380%;;
+                }
+            }
+        }
+        .guitarra2 .cuello .traste .nota{
+            background-color: aqua;
+            &:hover{
+                opacity:0%;
+            }
+        }
+        
+        
+    }
+    .tabla{
+        margin-top: 20px;
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display:flex;
+        flex-direction: column;
+        background-color: azure;
+        justify-content: space-around;
+        align-items: stretch;
+        .escala,.key {
+            display: flex;
+            column-gap: 10px;
+        }
+        &__tonos{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            position:relative;
+            left:30px;
+            p{
+                font-weight: bolder;
+                font-size: 2rem;
+            }
+            // Clases para jugar con JS.
+            .tono1{grid-column: 1/3;grid-row: 1/2;}
+            .tono2Mayor{grid-column: 3/5;grid-row: 1/2;}
+            .tono2Menor{grid-column: 4/6;grid-row: 1/2;}
+            .tono3{grid-column: 6/8;grid-row: 1/2;}
+            .tono4Mayor{grid-column: 8/10;grid-row: 1/2;}
+            .tono4Menor{grid-column: 9/11;grid-row: 1/2;}
+            .tono5Mayor{grid-column: 10/12;grid-row: 1/2;}
+            .tono5Menor{grid-column: 11/13;grid-row: 1/2;}
+            .semiTono1Mayor{grid-column: 5/6;grid-row: 1/2;}
+            .semiTono1Menor{grid-column: 3/4;grid-row: 1/2;}
+            .semiTono2Mayor{grid-column: 12/13;grid-row: 1/2;}
+            .semiTono2Menor{grid-column: 8/9;grid-row: 1/2;}
+        }
+        &__notas{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            .boton{
+                width:60px;
+                border-radius: 20%;
+                height:50px;
+                background-color: rgb(22, 206, 83);
+                font-weight: bolder;
+                font-size: 2rem;
+                opacity:0%;
+            }
+        }
+        &__intervalos{
+            margin-top: 20px;
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            .intervalos{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bolder;
+                background-color: aqua;
+                width: 50px;
+                height:50px;
+                border-radius: 50%;
+                opacity: 10%;
+                &:hover{
+                    opacity:30%;
+                    cursor: pointer;
+                }
+            }  
+        }
+        &__ColoresIntervalos{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            select{
+                border-radius: 50%;
+                width:20px;
+                opacity: 10%;
+                position:relative;
+                z-index: 1;
+                bottom:20px;
+                left:20px;
+            }
+        }
+        .escalaRelativa{
+            margin-top: 5px;
+            button{
+                background-color: #fa7979 !important;
+            }
+        }
+        .botones_reset{
+            margin-top:20px;
+        }
+        h3{
+            margin-top: 20px;
+        }
+    }
+
+}
+
+// clases para jugar con el JS.
+.seleccionado{
+    opacity:100% !important;
+}
+.hide{
+    opacity:0%;
+}
+.color1{
+    background-color: aqua !important;
+}
+.color2{
+    background-color: #16ce53 !important;
+}
+.color3{
+    background-color: rgb(37, 131, 255) !important;
+}
+.color4{
+    background-color: rgb(252, 16, 240) !important;
+}
+.bodyDarkMode{
+    background-color: black;
+    opacity: 80%;
+}
+.textColor{
+    color:white;
+}
+.guitarraDerecha{
+    grid-template-columns: 1fr 30fr !important;
+}
+.notasCuerdasDerecha{
+    grid-column:1/2 !important;
+    justify-self: end;
+}
+.numerosTrasteDerecha{
+    grid-column:3/2 !important;
+    flex-direction: row-reverse !important;
+}
+.cuelloDerecha{
+    grid-column:3/2 !important;
+    flex-direction: row !important;
+}
+.cuerdasCuelloDerecha{
+        grid-column:3/2 !important; 
+}
+.botonSeleccionado{
+    background-color: #16ce53;;
+    opacity:100%;
+}
+.openNota{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(22, 206, 83);
+    font-weight: bolder;
+    position:relative;
+    z-index:2;
+    height:25px;
+    width:25px;
+    border-radius: 50%;
+}

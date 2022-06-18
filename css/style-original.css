@@ -1,0 +1,368 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    font-size: 100%;
+    vertical-align: baseline;
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+
+body {
+    display: grid;
+    grid-template-areas:
+        "head head head head"
+        "menu principal principal side"
+        "menu principal principal side"
+        "menu principal principal side";
+    grid-template-columns: 2fr 5fr 5fr 2fr;
+}
+.head {
+    grid-area: head / head / head / head;
+}
+.titulo {
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
+}
+.subtitulo {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+.menu {
+    grid-area: menu / menu / menu / menu;
+}
+.principal {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 122, 37);
+    grid-area: principal / principal / principal / principal;
+}
+.guitarra {
+    display: grid;
+    height: 400px;
+    width: 100%;
+    grid-template-columns: 5% 90% 5%;
+    grid-template-rows: 1fr 5fr 1fr;
+    margin: auto;
+}
+.cuello {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    background-color: rgb(231, 132, 1);
+    width: 100%;
+    height: 100%;
+    column-gap: 20px;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    border-radius: 5px 5px 0px 0px;
+}
+.cuello .cuerdae,.cuerdaB,.cuerdaG,.cuerdaD,.cuerdaA,.cuerdaE {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    column-gap: 5px;
+    background-color: rgb(75, 75, 75);
+}
+.cuello .traste {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(170, 96, 0);
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+.cuello .traste .string {
+    background-color: black;
+    height: 5%;
+    width: 100%;
+    align-content: center;
+    z-index: 1;
+    position: relative;
+    top: 50%;
+}
+.cuello .cuerdaA .traste .string {
+    background-color: black;
+    height: 10%;
+    width: 100%;
+}
+.cuello .cuerdaE .traste .string {
+    background-color: black;
+    height: 12%;
+    width: 100%;
+}
+.cuello .cuerdaD .traste .string {
+    background-color: black;
+    height: 7%;
+    width: 100%;
+}
+.notaE,.notaF,.notaG,.notaA,.notaB,.notaC,.notaD,.notaEb,.notaFsharp,.notaGsharp,.notaAsharp,.notaBb,.notaCsharp,.notaDsharp,.notaAb,.notaDb,.notaGb,.notaBd {
+    width: 25%;
+    height: 50%;
+    background-color: rgb(110, 255, 224);
+    position: relative;
+    top: 25%;
+    z-index: 1;
+    border-radius: 10%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+    padding: 0px 5px 0px 0px;
+    /* display: none; */
+    visibility: hidden;
+}
+.notaA:hover {
+    background-color: aqua;
+}
+.aparecer {
+    /* display:initial; */
+    visibility: visible;
+}
+.nota p {
+    color: black;
+    position: relative;
+    top: 3px;
+    font-weight: bolder;
+    text-align: center;
+}
+.root_note {
+    width: 25%;
+    height: 50%;
+    background-color: rgb(6, 228, 62);
+    position: relative;
+    top: 25%;
+    z-index: 1;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+}
+.root_note p {
+    position: relative;
+    top: 3px;
+    font-weight: bolder;
+    text-align: center;
+}
+.cuello .punto_x {
+    background-color: white;
+    width: 25%;
+    height: 45%;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+    top: 25%;
+    z-index: 0;
+    border-radius: 50%;
+    grid-row: 1 / 2;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+}
+.cuello .punto_xx {
+    background-color: white;
+    width: 25%;
+    height: 10%;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+    top: 25%;
+    z-index: 0;
+    border-radius: 50%;
+    grid-row: 1 / 2;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+}
+.cuello .punto {
+    background-color: white;
+    width: 25%;
+    height: 45%;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+    top: 70%;
+    z-index: 0;
+    border-radius: 50%;
+    grid-row: 1 / 2;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+}
+.notas_cuello {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 50%;
+    place-self: center left;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+.notas_cuello div {
+    display: flex;
+    background-color: antiquewhite;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    font-size: 25px;
+    padding: 0px 10px;
+}
+.numero_traste {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: 100%;
+    height: 70%;
+    width: 100%;
+    background-color: rgb(231, 132, 1);
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    border-radius: 0px 0px 20px 20px;
+}
+.numero_traste .punto,.punto3,.punto5,.punto7,.punto9,.punto15,.punto3G,.punto5G,.punto7G,.punto9G,.punto15G,.punto12_1,.punto12_2 {
+    background-color: white;
+    width: 15%;
+    height: 40%;
+    align-self: center;
+    justify-self: center;
+    border-radius: 50%;
+    grid-row: 1 / 2;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+}
+.numero_traste .punto3,.punto3G {
+    grid-column: 13 / 14;
+}
+.numero_traste .punto3G {
+    position:relative;
+    bottom:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .punto5,.punto5G {
+    grid-column: 11 / 12;
+}
+.numero_traste .punto5G {
+    position:relative;
+    bottom:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .punto7,.punto7G {
+    grid-column: 9 / 10;
+}
+.numero_traste .punto7G {
+    position:relative;
+    bottom:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .punto9,.punto9G {
+    grid-column: 7 / 8;
+}
+.numero_traste .punto9G {
+    position:relative;
+    bottom:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .punto15,.punto15G {
+    grid-column: 1 / 2;
+}
+.numero_traste .punto15G {
+    position:relative;
+    bottom:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .doble-punto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-content: space-around;
+    grid-column: 4 / 5;
+}
+.numero_traste .punto12_1{
+    position:relative;
+    bottom:112px;
+    left:160px;
+    width: 20%;
+    height: 50%;
+}
+.numero_traste .punto12_2{
+    position:relative;
+    bottom:210px;
+    left:75px;
+    width: 20%;
+    height: 50%;
+}
+.tabla {
+    display: flex;
+    height: 200px;
+    width: 100%;
+}
+.tabla .items {
+    display: grid;
+    height: 80%;
+    width: 60%;
+    background-color: cyan;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: 1fr 2fr 1fr;
+    margin: auto;
+    padding: 0px 50px;
+}
+.tabla .items p {
+    font-size: 30px;
+    margin: auto;
+}
+.tabla .items .s1 {
+    position: relative;
+    right: 50%;
+}
+.tabla .items .tonos, .s2, .s1 {
+    color: red;
+}
+.tabla .items .items__notas {
+    background-color: aliceblue;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    border-radius: 0%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+    padding: 0px 15px 0px 10px;
+}
+.side {
+    grid-area: side / side / side / side;
+}
+.apretado{
+    background-color: rgba(54, 54, 54, 0.274);
+    color: red;
+}
+button.boton{
+    font-size: 32px;
+    height:50px;
+    position:relative;
+    top:15px;
+}
+
+.dropDownMenues {
+    display:flex;
+    flex-direction: column;
+    width:fit-content;
+}
